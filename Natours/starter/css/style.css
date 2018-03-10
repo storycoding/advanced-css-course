@@ -29,9 +29,9 @@ body {
         rgba(110, 10, 8, 0.74),  #002638af), 
         url('../img/hero.jpg');
     background-size: cover;
-    background-position: center;
+    background-position: top;
     clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%);
-    position: relative;
+    position: relative;    
 }
 
 .logo-box {
@@ -42,29 +42,36 @@ body {
 
 .logo {
     height: 35px;
+    transition: all .5s;
+}
+
+.logo:hover {
+    transform: rotate3d(0, 1, 0, 180deg);
 }
 
 .text-box {
     position: absolute;
     top: 40%;
     left: 50%;
-    transform: translate(-50%, -50%)  
+    transform: translate(-50%, -50%);
+    text-align: center;
 }
 
 .heading-primary {
     color: white;
     text-transform: uppercase;
+    backface-visibility:  hidden;
+    margin-bottom: 60px;
 }
 
 .heading-primary-main {
     display: block;
     font-size: 60px;
     font-weight: 400;
-    letter-spacing: 35px;
+    letter-spacing: 35.5px;
     animation-name: slideInLeft;
     animation-duration: 1s;
     animation-timing-function: ease-out;
-
     /*
     animation-iteration-count: 3;
     animation-delay: 3s;
@@ -74,8 +81,36 @@ body {
 .heading-primary-sub {
     display: block;
     font-size: 20px;
-    font-weight: 700;
-    letter-spacing: 17.5px;
+    font-weight: 4 00;
+    letter-spacing: 17px;
+    animation: slideInRight 1s ease-out; /* shorthand version */
+}
+
+.btn:visited,
+.btn:link {
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 15px 40px;
+    display: inline-block;
+    border-radius: 100px;
+    line-height: 50%;
+    transition: all .2s ease-in-out;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    transform: scale(1);
+    box-shadow: 0 3px 0px rgba(0, 0, 0, 0.5);
+}
+
+.btn:active {
+    transform: scale(0.95);
+    box-shadow: none;
+}
+
+.btn-white {
+    background-color: #fff;
+    color: #777;
 }
 
 @keyframes slideInLeft {
@@ -84,14 +119,38 @@ body {
         transform: translate(-70%);
     }
     
-    /*
     80% {
         transform: translate(10px);
     }
-    */
 
     100% {
         opacity: 1;
         transform: translate(0);
+    }
+}
+
+@keyframes slideInRight {
+    0% {
+        opacity: 0;
+        transform: translate(70%);
+    }
+    
+    80% {
+        transform: translate(-10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes flip {
+    0% {
+        transform: rotate3d(0, 0, 0, 0deg);
+    }
+
+    100% {
+        transform: rotate3d(0, 1, 0, 360deg);
     }
 }
